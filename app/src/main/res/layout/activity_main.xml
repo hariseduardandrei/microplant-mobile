@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/image_op_40">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_guide_line_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/forestgreen"
+            app:layout_constraintBottom_toBottomOf="@+id/gl_guide_line_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/iv_image_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:text="@string/micro_plant"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_settings"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/iv_settings"
+                style="@style/actionOverflowButtonStyle"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="42dp"
+                android:contentDescription="@string/settings_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gl_guide_line_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_temperature"
+                android:layout_width="180dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/layout_air_humidity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/progress_temperature"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/pb_circular_determinative"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_temperature"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_temperature"
+                    app:layout_constraintStart_toStartOf="@+id/progress_temperature"
+                    app:layout_constraintTop_toTopOf="@+id/progress_temperature"
+                    tools:text="Temperature 50%" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_air_humidity"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_temperature"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/progress_air_humidity"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/pb_circular_determinative"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_air_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_air_humidity"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_air_humidity"
+                    app:layout_constraintStart_toStartOf="@+id/progress_air_humidity"
+                    app:layout_constraintTop_toTopOf="@+id/progress_air_humidity"
+                    tools:text="Air humidity 50" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_soil_humidity"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintEnd_toStartOf="@id/layout_container_volume"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_temperature">
+
+                <ProgressBar
+                    android:id="@+id/progress_soil_humidity"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/pb_circular_determinative"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_soil_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_soil_humidity"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_soil_humidity"
+                    app:layout_constraintStart_toStartOf="@+id/progress_soil_humidity"
+                    app:layout_constraintTop_toTopOf="@+id/progress_soil_humidity"
+                    tools:text="50%" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_container_volume"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/layout_soil_humidity"
+                app:layout_constraintTop_toBottomOf="@id/layout_air_humidity">
+
+                <ProgressBar
+                    android:id="@+id/progress_container_volume"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/pb_circular_determinative"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_container_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_container_volume"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_container_volume"
+                    app:layout_constraintStart_toStartOf="@+id/progress_container_volume"
+                    app:layout_constraintTop_toTopOf="@+id/progress_container_volume"
+                    tools:text="50%" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <Button
+                android:id="@+id/btn_start_game"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/red"
+                android:text="Start game"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_soil_humidity" />
+
+            <Button
+                android:id="@+id/btn_pump_demo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/light_blue"
+                android:text="Water"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_start_game"
+                app:layout_constraintTop_toBottomOf="@id/layout_container_volume" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

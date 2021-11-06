@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">hackton-android</string>
+    <string name="micro_plant">Micro plant</string>
+    <string name="settings_icon">settings_icon</string>
+    <string name="team">Team</string>
+</resources>
