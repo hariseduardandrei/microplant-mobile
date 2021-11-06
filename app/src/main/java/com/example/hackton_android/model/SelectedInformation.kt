@@ -3,7 +3,7 @@ package com.example.hackton_android.model
 class SelectedInformation(
     var team: String? = "", var lightStartHour: Int? = null, var lightStartMinute: Int? = null,
     var lightEndHour: Int? = null, var lightEndMinute: Int? = null,
-    var containerVolume: Int? = null
+    var containerVolume: Int? = null,var minSoilHum: Int? = null
 ) {
 
 

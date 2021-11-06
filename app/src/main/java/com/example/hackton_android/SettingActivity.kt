@@ -36,6 +36,7 @@ class SettingActivity : AppCompatActivity() {
         val lightEndMinute = SharedPreferenceUtils.getInt(LIGHT_END_MINUTE)
 
         val containerVolume = SharedPreferenceUtils.getInt(CONTAINER_VOLUME)
+        val minimSoilHumidity = SharedPreferenceUtils.getInt(MINIM_SOIL_HUMIDITY)
 
         if (SharedPreferenceUtils.getString(TEAM).isNotEmpty()) {
             dataViewModel.selectedInformation.team = SharedPreferenceUtils.getString(TEAM)
@@ -62,6 +63,13 @@ class SettingActivity : AppCompatActivity() {
         if (containerVolume != null && containerVolume != -1) {
             dataViewModel.selectedInformation.containerVolume = containerVolume
             dataBinding.etContainerVolume.setText("" + containerVolume)
+            dataBinding.notifyChange()
+        }
+
+
+        if (minimSoilHumidity != null && minimSoilHumidity != -1) {
+            dataViewModel.selectedInformation.minSoilHum = minimSoilHumidity
+            dataBinding.etMinimSoilHumidity.setText("" + minimSoilHumidity)
             dataBinding.notifyChange()
         }
 
@@ -128,6 +136,11 @@ class SettingActivity : AppCompatActivity() {
                     dataViewModel.selectedInformation.containerVolume
                 )
 
+                SharedPreferenceUtils.save(
+                    MINIM_SOIL_HUMIDITY,
+                    dataViewModel.selectedInformation.minSoilHum
+                )
+
                 dataViewModel.saveConfig()
             }
         }
@@ -137,10 +150,6 @@ class SettingActivity : AppCompatActivity() {
         dataBinding.addOnPropertyChangedCallback(object :
             Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                Log.i(
-                    "[ASDASDASDASDASDASDASDASDASDASDASD]",
-                    "${dataViewModel.selectedInformation.areInvalidInformation()}"
-                )
                 if (!dataViewModel.selectedInformation.areInvalidInformation()) {
                     enabledBtnNext()
                 } else {
@@ -154,6 +163,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         dataBinding.etContainerVolume.inputType = InputType.TYPE_CLASS_NUMBER
+        dataBinding.etMinimSoilHumidity.inputType = InputType.TYPE_CLASS_NUMBER
         dataBinding.etContainerVolume.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
@@ -169,8 +179,30 @@ class SettingActivity : AppCompatActivity() {
                 before: Int, count: Int
             ) {
 
-                if(s.trim().isNotEmpty()) {
+                if (s.trim().isNotEmpty()) {
                     dataViewModel.selectedInformation.containerVolume =
+                        Integer.valueOf(s.trim().toString())
+                    dataBinding.notifyChange()
+                }
+            }
+        })
+
+        dataBinding.etMinimSoilHumidity.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+                if (s.trim().isNotEmpty()) {
+                    dataViewModel.selectedInformation.minSoilHum =
                         Integer.valueOf(s.trim().toString())
                     dataBinding.notifyChange()
                 }
