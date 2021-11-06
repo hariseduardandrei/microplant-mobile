@@ -265,9 +265,9 @@ class SettingActivity : AppCompatActivity() {
             }
             else -> {
                 if (minute < 10) {
-                    "${hourOfDay}:${minute}"
+                    "0${hourOfDay}:0${minute}"
                 } else {
-                    "${hourOfDay}:${minute}"
+                    "0${hourOfDay}:${minute}"
                 }
             }
         }

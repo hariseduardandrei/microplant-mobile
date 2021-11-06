@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 val temperatureText = "Temperature\n${it.temperature}°C"
                 val airHumidityText = "Air humidity\n${it.airHumidity}%"
                 val soilHumidityText = "Soil Humidity\n${it.soilHumidity}%"
-                val containerVolumeText = "Container Volume\n${it.containerVolume}%"
+                val containerVolumeText = "Container Volume\n${it.containerVolume} ml"
 
 
                 dataBinding.tvTemperature.text = temperatureText
